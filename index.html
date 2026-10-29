@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIVA GROUP × MediTech — предложение о сотрудничестве</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B2027;--petrol:#0F3B44;--teal:#15616D;--mint:#EAF4F2;--copper:#C97A3D;--copper2:#A15E28;--paper:#FBFAF7;--line:#E4E6E1;--muted:#5B6664;--red:#D64545}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 "Onest",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Geologica",sans-serif;margin:0;letter-spacing:-.02em;font-weight:600}
+p{margin:0}a{color:inherit}
+/* chrome */
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--copper);width:0;z-index:100;transition:width .1s}
+.topbar{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:90;background:rgba(251,250,247,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:transform .3s}
+body.on-cover .topbar{transform:translateY(-100%)}
+.tb-left{display:flex;align-items:center;gap:14px}
+.tb-menu{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center}
+.tb-ch{font-family:Geologica;font-size:14px}.tb-ch b{color:var(--copper);margin-right:8px;font-weight:600}
+.tb-right{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.nbtn{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:15px}
+.mode{position:fixed;top:14px;right:20px;z-index:95;border:1px solid var(--line);background:#fff;border-radius:30px;padding:8px 14px;font:600 12.5px Onest;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+body:not(.on-cover) .mode{top:72px}
+.rail{position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;gap:6px}
+.rail a{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;color:var(--muted)}
+.rail .rn{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:#fff;font:600 10.5px Geologica}
+.rail .rt{opacity:0;transform:translateX(-6px);transition:.2s;white-space:nowrap;background:#fff;padding:3px 9px;border-radius:8px;border:1px solid var(--line)}
+.rail a:hover .rt{opacity:1;transform:none}
+.rail a.on .rn{background:var(--ink);color:#fff;border-color:var(--ink)}
+body.on-cover .rail{opacity:0;pointer-events:none}
+@media(max-width:1100px){.rail{display:none}}
+.sheet{position:fixed;inset:0;background:rgba(11,32,39,.45);z-index:120;display:none}
+.sheet.open{display:block}
+.sheet-in{position:absolute;left:0;top:0;bottom:0;width:340px;background:#fff;padding:28px;overflow:auto}
+.sheet-in h4{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:16px}
+.sheet-in ol{list-style:none;margin:0;padding:0}
+.sheet-in a{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none;font:500 16px Geologica}
+.sheet-in a span{color:var(--copper);width:24px}
+/* slides */
+.slide{min-height:100vh;padding:100px 7vw 60px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.slide.alt{background:#fff}.slide.dark{background:radial-gradient(120% 140% at 15% -10%,#1c5762 0%,var(--petrol) 45%,var(--ink) 100%);color:#fff}
+.in{max-width:1180px;margin:0 auto;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:600 12px Onest;letter-spacing:.14em;text-transform:uppercase;color:var(--copper2)}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--copper)}
+.dark .eyebrow{color:#8FD8CE}
+.h2{font-size:clamp(28px,3.6vw,46px);line-height:1.1;margin-top:14px;max-width:900px}
+.h2 em{font-style:normal;color:var(--copper)}
+.lead{font-size:17px;color:var(--muted);max-width:720px;margin-top:16px}
+.dark .lead{color:#C7DAD8}
+.grid{display:grid;gap:14px;margin-top:34px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}}@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}.slide{padding:90px 18px 50px}}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.alt .card{background:var(--paper)}
+.card .tag{display:inline-block;font:700 10.5px Onest;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;background:#FBEAE0;color:var(--copper2)}
+.card h4{font-size:18px;margin-top:12px}.card p{font-size:14px;color:var(--muted);margin-top:8px}
+.num{font:600 13px Geologica;color:var(--copper)}
+/* cover */
+#cover{text-align:center;align-items:center;overflow:hidden;background:var(--paper)}
+#cover:before{content:"";position:absolute;right:-180px;top:-180px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(201,122,61,.28),transparent 68%)}
+#cover:after{content:"";position:absolute;left:-200px;bottom:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(21,97,109,.22),transparent 68%)}
+.duo{display:flex;align-items:center;justify-content:center;gap:0;position:relative;z-index:2}
+.logo-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 26px;box-shadow:0 10px 30px -12px rgba(11,32,39,.18);height:76px;display:flex;align-items:center}
+.logo-box img{height:34px}
+.mt-logo{font:700 24px Geologica;color:var(--petrol);letter-spacing:-.02em}.mt-logo span{color:var(--copper)}
+.duo .link{width:70px;height:1px;background:var(--line);position:relative}
+.duo .rings{width:46px;height:30px;position:relative;margin:0 -8px}
+.duo .rings i{position:absolute;top:0;width:30px;height:30px;border-radius:50%;border:2.5px solid}
+.duo .rings i:first-child{left:0;border-color:#1F6FD1}.duo .rings i:last-child{right:0;border-color:var(--copper)}
+.cover-pill{margin-top:34px;font-size:13px;color:var(--muted);display:inline-flex;gap:8px;align-items:center;position:relative;z-index:2}
+.cover-pill i{width:7px;height:7px;border-radius:50%;background:var(--copper)}
+#cover h1{font-size:clamp(40px,6vw,78px);line-height:1.04;margin-top:14px;position:relative;z-index:2}
+#cover h1 em{font-style:normal;color:var(--copper)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:26px;position:relative;z-index:2}
+.chips span{border:1px solid var(--line);background:#fff;border-radius:30px;padding:7px 14px;font-size:13px;font-weight:500}
+.start{margin-top:30px;display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;border:none;border-radius:40px;padding:8px 8px 8px 22px;font:600 14px Onest;cursor:pointer;position:relative;z-index:2}
+.start b{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center}
+/* problem */
+.errshot{margin-top:30px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 30px 70px -34px rgba(11,32,39,.4)}
+.bchrome{background:#ECEAE2;padding:10px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#C9C6BB}
+.addr{flex:1;background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 12px;font-size:12.5px;color:#6B7573}
+.addr b{color:var(--red);font-weight:600}
+.err-body{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;padding:34px 38px;align-items:center}
+.err-body h3{font-size:30px;color:#2b2f36}.err-body p{color:#555;margin-top:10px;font-size:14px}
+.err-x{width:120px;height:120px;border-radius:50%;border:12px solid #5C6CF2;display:grid;place-items:center;font:700 64px Geologica;color:#5C6CF2;margin:auto}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+@media(max-width:900px){.facts{grid-template-columns:1fr 1fr}.err-body{grid-template-columns:1fr}}
+.fact{border-radius:14px;padding:16px;background:#fff;border:1px solid var(--line)}
+.fact b{display:block;font:600 15px Geologica;color:var(--red)}.fact span{font-size:13px;color:var(--muted);display:block;margin-top:4px}
+.strong{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.strong div{flex:1;min-width:140px}.strong b{display:block;font:600 28px Geologica;color:var(--petrol)}.strong span{font-size:13px;color:var(--muted)}
+/* system */
+.sys{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+@media(max-width:900px){.sys{grid-template-columns:1fr}}
+.sys .card{position:relative}.sys .k{font:600 11px Onest;text-transform:uppercase;letter-spacing:.12em;color:var(--teal)}
+.sys .arrow{margin-top:18px;padding:14px 18px;border-radius:14px;background:var(--ink);color:#fff;font:500 15px Geologica;text-align:center}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:34px}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.step .n{font:600 26px Geologica;color:var(--copper)}.step b{display:block;margin-top:10px;font:600 15px Geologica}.step span{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+.note{margin-top:18px;background:var(--mint);border-radius:14px;padding:14px 18px;font-size:14px;color:#294A4C}
+/* concepts */
+.cwrap{display:grid;grid-template-columns:300px 1fr;gap:18px;margin-top:30px}
+@media(max-width:900px){.cwrap{grid-template-columns:1fr}}
+.clist{display:flex;flex-direction:column;gap:8px}
+.cbtn{text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;cursor:pointer;font:inherit;display:flex;gap:12px}
+.cbtn .cn{width:30px;height:30px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font:600 13px Geologica;flex:0 0 auto}
+.cbtn b{display:block;font:600 15px Geologica}.cbtn span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.cbtn.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}.cbtn.on .cn{background:var(--ink);color:#fff}
+.frame{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 30px 70px -34px rgba(11,32,39,.4);display:flex;flex-direction:column}
+.frame iframe{width:100%;height:560px;border:0;display:block;background:#fff}
+.open-full{font:600 12px Onest;border:none;background:var(--ink);color:#fff;border-radius:20px;padding:6px 12px;cursor:pointer}
+/* builder */
+.bwrap{display:grid;grid-template-columns:360px 1fr;gap:18px;margin-top:30px}
+@media(max-width:900px){.bwrap{grid-template-columns:1fr}}
+.brow{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font:500 14.5px Geologica}
+.brow .opts{display:flex;gap:6px}
+.brow .opts button{width:30px;height:30px;border-radius:9px;border:1px solid var(--line);background:#fff;cursor:pointer;font:600 12.5px Geologica}
+.brow .opts button.on{background:var(--copper);border-color:var(--copper);color:#fff}
+.brow.off{opacity:.45}
+.brow label{display:flex;align-items:center;gap:8px;cursor:pointer}
+/* crm */
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px}
+@media(max-width:900px){.feat{grid-template-columns:1fr 1fr}}
+.feat div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.feat i{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--petrol);color:#fff;font:600 13px Geologica}
+.feat b{display:block;margin-top:10px;font:600 14px Geologica}.feat span{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.tariff{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+@media(max-width:900px){.tariff{grid-template-columns:1fr}}
+.tcard{background:linear-gradient(160deg,#0F3B44,#0B2027);color:#fff;border-radius:18px;padding:24px;position:relative}
+.tcard .badge{position:absolute;top:18px;right:18px;background:var(--copper);font:700 10.5px Onest;padding:4px 10px;border-radius:20px}
+.tcard .pt{font:600 11px Onest;text-transform:uppercase;letter-spacing:.12em;color:#8FD8CE}
+.tcard .pr{font:600 32px Geologica;margin-top:12px}.tcard .pr span{font-size:14px;color:#B9D3D0}
+.tcard .old{text-decoration:line-through;color:#7FA6A3;font-size:13px;margin-top:4px}.tcard .sv{color:#8FD8CE;font-weight:600;font-size:13px;margin-top:2px}
+.tcard ul{list-style:none;padding:14px 0 0;margin:14px 0 0;border-top:1px solid rgba(255,255,255,.15)}
+.tcard li{font-size:13.5px;padding:3px 0;color:#DCEAE8}.tcard li:before{content:"✓ ";color:var(--copper);font-weight:700}
+.irow{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.irow:first-of-type{border-top:none}.irow .v{font-weight:600;color:var(--teal);text-align:right}.irow .v.free{color:#1F8A5C}
+/* seo */
+.serp{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-top:30px;box-shadow:0 20px 50px -30px rgba(11,32,39,.3)}
+.serp .q{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:30px;padding:10px 18px;font-size:15px;max-width:620px}
+.serp .q b{font:700 20px Geologica;letter-spacing:-.04em}
+.serp .q b span:nth-child(1){color:#4285F4}.serp .q b span:nth-child(2){color:#EA4335}.serp .q b span:nth-child(3){color:#FBBC05}.serp .q b span:nth-child(4){color:#4285F4}.serp .q b span:nth-child(5){color:#34A853}.serp .q b span:nth-child(6){color:#EA4335}
+.res{padding:14px 0;border-bottom:1px solid #f0f0f0;max-width:680px}.res:last-child{border:none}
+.res .u{font-size:12.5px;color:#4d5156}.res .t{font-size:18px;color:#1a0dab;margin-top:2px}.res .d{font-size:13.5px;color:#4d5156;margin-top:2px}
+.res.you{background:var(--mint);border-radius:12px;padding:14px;margin:6px -14px;border:none;position:relative}
+.res.you:after{content:"Ваш сайт";position:absolute;right:12px;top:12px;font:700 10.5px Onest;background:var(--copper);color:#fff;padding:3px 9px;border-radius:20px}
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+@media(max-width:900px){.months{grid-template-columns:1fr}}
+.months .card ul{margin:10px 0 0;padding-left:18px;font-size:13.5px;color:#3C4645}.months .card li{margin:3px 0}
+.months .res-l{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;font-weight:600;color:var(--teal)}
+/* plan */
+.gantt{margin-top:34px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;overflow-x:auto}
+.grow{display:grid;grid-template-columns:150px repeat(4,1fr);gap:6px;align-items:center;min-width:720px;margin-bottom:8px}
+.grow.head{font:600 11.5px Onest;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.grow .lb{font:600 14px Geologica}
+.bar{height:34px;border-radius:9px;display:flex;align-items:center;padding:0 12px;font-size:12.5px;font-weight:600;color:#fff;cursor:default;white-space:nowrap;overflow:hidden}
+.b1{background:var(--petrol)}.b2{background:var(--teal)}.b3{background:var(--copper)}.b4{background:#E9C9AF;color:#6b3f1c}.b5{background:#BFD9D6;color:#0F3B44}
+.miles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+@media(max-width:900px){.miles{grid-template-columns:1fr 1fr}}
+.mile{border-left:3px solid var(--copper);padding:6px 0 6px 14px}.mile b{display:block;font:600 13px Onest;color:var(--copper2);text-transform:uppercase;letter-spacing:.06em}.mile span{font:500 16px Geologica}
+/* who */
+.who{display:grid;grid-template-columns:1fr 1.3fr;gap:24px;margin-top:30px;align-items:start}
+@media(max-width:900px){.who{grid-template-columns:1fr}}
+.big{font:600 90px Geologica;line-height:1;color:var(--copper)}
+.team{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.team span{border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:7px 14px;font-size:13px}
+.dark .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}.dark .card p{color:#C7DAD8}
+/* price */
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+@media(max-width:900px){.pcards{grid-template-columns:1fr}}
+.pc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.pc .t{font:600 11px Onest;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.pc h4{font-size:18px;margin-top:6px}.pc .p{font:600 26px Geologica;margin-top:14px}.pc .p span{font-size:13px;color:var(--muted)}
+.pc .d{font-size:13px;color:var(--muted);margin-top:8px}
+.total{margin-top:16px;border-radius:18px;background:var(--ink);color:#fff;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.total .k{font:600 11px Onest;text-transform:uppercase;letter-spacing:.12em;color:#8FD8CE}.total .v{font:600 34px Geologica}
+.total p{font-size:13.5px;color:#C7DAD8;max-width:430px}
+/* cta */
+.ctag{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;margin-top:30px}
+@media(max-width:900px){.ctag{grid-template-columns:1fr}}
+.nsteps{display:flex;flex-direction:column;gap:10px}
+.nsteps div{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px}
+.nsteps b{font:600 22px Geologica;color:var(--copper);min-width:28px}
+.clist2 div{padding:12px 0;border-top:1px solid rgba(255,255,255,.15);font-size:15px}.clist2 div:first-child{border:none}
+.clist2 .l{display:block;font:600 10.5px Onest;letter-spacing:.1em;text-transform:uppercase;color:#8FD8CE;margin-bottom:3px}
+.cta-btn{display:inline-flex;margin-top:22px;background:var(--copper);color:#fff;text-decoration:none;font-weight:600;padding:14px 24px;border-radius:12px}
+/* presentation mode */
+html.present body{overflow:hidden}
+html.present .slide{position:fixed;inset:0;min-height:0;height:100vh;overflow:auto;opacity:0;pointer-events:none;transition:opacity .35s}
+html.present .slide.cur{opacity:1;pointer-events:auto;z-index:5}
+html.present .rail{display:flex}
+.anim{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.anim.vis{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.anim{opacity:1;transform:none}}
+html,body{overflow-x:hidden}
+@media(max-width:600px){.duo .link{display:none}.logo-box{padding:10px 14px;height:56px}.mt-logo{font-size:17px}.duo .rings{transform:scale(.8)}#cover h1{font-size:38px}.mode{top:12px;right:12px;padding:6px 10px;font-size:11px}.frame iframe{height:460px}.cover-pill{font-size:12px}}
+</style>
+</head>
+<body class="on-cover">
+<div id="progress"></div>
+<header class="topbar">
+ <div class="tb-left"><button class="tb-menu" id="menuBtn" aria-label="Оглавление">☰</button><div class="tb-ch"><b id="tcNum">01</b><span id="tcTitle"></span></div></div>
+ <div class="tb-right"><span><b id="sNow">1</b> / <span id="sAll"></span></span><button class="nbtn" id="prev">↑</button><button class="nbtn" id="next">↓</button></div>
+</header>
+<button class="mode" id="modeBtn">▣ <span id="modeLbl">Режим презентации</span></button>
+<nav class="rail" id="rail"></nav>
+<div class="sheet" id="sheet"><div class="sheet-in"><h4>Оглавление</h4><ol id="sheetList"></ol></div></div>
+
+<!-- COVER -->
+<section class="slide" id="cover" data-title="Обложка">
+ <div class="in">
+  <div class="duo">
+   <div class="logo-box"><div class="mt-logo" style="color:#1F6FD1;letter-spacing:.02em">AIVA<span style="color:#1F6FD1;font-weight:400">.GROUP</span></div></div>
+   <div class="link"></div><div class="rings"><i></i><i></i></div><div class="link"></div>
+   <div class="logo-box"><div class="mt-logo">Medi<span>Tech</span></div></div>
+  </div>
+  <div class="cover-pill"><i></i>Персональное предложение для MediTech · NAZAR Group</div>
+  <h1>Предложение<br>о <em>сотрудничестве</em></h1>
+  <div class="chips"><span>Новый сайт</span><span>emyCRM с ИИ</span><span>SEO-продвижение</span></div>
+  <button class="start" data-go="next">Начать <b>↓</b></button>
+ </div>
+</section>
+
+<!-- 01 SITUATION -->
+<section class="slide alt" data-num="01" data-title="Ситуация">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>01 · Ситуация на сегодня</div>
+  <h2 class="h2 anim">Сайт meditech.uz <em>сейчас не открывается</em></h2>
+  <p class="lead anim">Проверили 29 октября 2026 года. Вместо сайта клиники и закупщики видят служебную страницу хостинга:</p>
+  <div class="errshot anim">
+   <div class="bchrome"><div class="dots"><i></i><i></i><i></i></div><div class="addr"><b>⚠ Не защищено</b> &nbsp;meditech.uz</div></div>
+   <div class="err-body">
+    <div><div style="font-size:14px;color:#777">meditech.uz</div><h3>Домен не привязан к хостингу</h3><p>На сайт не установлен SSL-сертификат, или домен направлен на DNS-серверы хостинга, но не добавлен в панели управления.</p></div>
+    <div class="err-x">×</div>
+   </div>
+  </div>
+  <div class="facts anim">
+   <div class="fact"><b>Ошибка хостинга</b><span>Вместо главной — заглушка «Домен не привязан»</span></div>
+   <div class="fact"><b>Чужой SSL</b><span>По https браузер выдаёт предупреждение о безопасности</span></div>
+   <div class="fact"><b>Закрыт от Google</b><span>robots.txt: «Disallow: /» — индексация запрещена полностью</span></div>
+   <div class="fact"><b>Нет карты сайта</b><span>sitemap.xml отвечает ошибкой 404</span></div>
+  </div>
+  <div class="strong anim">
+   <div><b>с 2016</b><span>на рынке Узбекистана</span></div>
+   <div><b>NAZAR</b><span>группа компаний: медцентр, оптика, фармацевтика</span></div>
+   <div><b>Bausch + Lomb, Topcon</b><span>Tomey, Staar Surgical и другие производители</span></div>
+   <div><b>Шоу-рум</b><span>в Ташкенте — редкое преимущество на рынке</span></div>
+  </div>
+  <p class="note anim">Сильная репутация офлайн — и ноль присутствия онлайн. Каждый закупщик, который ищет MediTech в Google или переходит по ссылке из визитки, сейчас уходит к конкуренту.</p>
+ </div>
+</section>
+
+<!-- 02 SYSTEM -->
+<section class="slide" data-num="02" data-title="Что предлагаем">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>02 · Что предлагаем</div>
+  <h2 class="h2 anim">Не отдельные услуги, а <em>одна система</em> привлечения заказов</h2>
+  <p class="lead anim">Сайт превращает трафик в заявки, CRM не даёт им потеряться, SEO приводит закупщиков из Google стабильно и без оплаты за клик.</p>
+  <div class="sys">
+   <div class="card anim"><div class="k">Фундамент</div><h4>Новый сайт</h4><p>B2B-сайт с каталогом по направлениям, страницами услуг, проектами и формой запроса КП.</p></div>
+   <div class="card anim"><div class="k">Контроль</div><h4>emyCRM с ИИ</h4><p>Звонки, заявки с сайта, Telegram и Instagram — в одной системе. ИИ расшифровывает и оценивает разговоры.</p></div>
+   <div class="card anim"><div class="k">Поток</div><h4>SEO-продвижение</h4><p>Позиции в Google по категориям оборудования, брендам и моделям, которые ищут клиники.</p></div>
+  </div>
+  <div class="sys" style="margin-top:0"><div></div><div class="arrow anim">→ Заявки от клиник и закупщиков в одном окне</div><div></div></div>
+ </div>
+</section>
+
+<!-- 03 SITE -->
+<section class="slide alt" data-num="03" data-title="Новый сайт">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>03 · Новый сайт · как делаем</div>
+  <h2 class="h2 anim">Новый meditech.uz <em>за 4 недели</em></h2>
+  <p class="lead anim">Каждую неделю — отчёт и короткая встреча: вы согласуете результат и следующий шаг. Проект всё время перед глазами, без сюрпризов в конце.</p>
+  <div class="steps">
+   <div class="step anim"><div class="n">01</div><b>Аудит и структура</b><span>Направления, бренды, услуги, путь B2B-клиента</span></div>
+   <div class="step anim"><div class="n">02</div><b>Концепции</b><span>Три варианта дизайна — уже готовы, смотрите дальше</span></div>
+   <div class="step anim"><div class="n">03</div><b>Сборка</b><span>Выбираете вариант или собираете из нескольких</span></div>
+   <div class="step anim"><div class="n">04</div><b>Вёрстка</b><span>Адаптив для ПК, планшета и смартфона</span></div>
+   <div class="step anim"><div class="n">05</div><b>Наполнение</b><span>Каталог, услуги, проекты, партнёры. RU / UZ</span></div>
+   <div class="step anim"><div class="n">06</div><b>Запуск</b><span>SSL, скорость, SEO-база, связка с emyCRM</span></div>
+  </div>
+  <div class="grid g3">
+   <div class="card anim"><h4>Каталог с фильтрами</h4><p>Офтальмология, стоматология и ЛОР, диагностика, операционное, дерматология, лаборатория — фильтр по направлению и бренду.</p></div>
+   <div class="card anim"><h4>Запрос КП в 1 клик</h4><p>На каждой карточке — форма «Запросить КП» и Telegram. Заявка сразу попадает в emyCRM.</p></div>
+   <div class="card anim"><h4>Админ-панель</h4><p>Ваш менеджер сам добавляет оборудование, цены, проекты и новости — без программиста.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 04 CONCEPTS -->
+<section class="slide" data-num="04" data-title="Концепции дизайна">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>04 · Редизайн · концепции</div>
+  <h2 class="h2 anim"><em>3 концепции</em> дизайна для MediTech</h2>
+  <p class="lead anim">Выберите вариант — сайт откроется прямо здесь, его можно листать.</p>
+  <div class="cwrap">
+   <div class="clist" id="clist"></div>
+   <div class="frame anim"><div class="bchrome"><div class="dots"><i></i><i></i><i></i></div><div class="addr">🔒 meditech.uz</div><button class="open-full" id="openFull">Открыть ↗</button></div><iframe id="cframe" title="Концепция"></iframe></div>
+  </div>
+ </div>
+</section>
+
+<!-- 05 BUILDER -->
+<section class="slide alt" data-num="05" data-title="Сборка из блоков">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>05 · Редизайн · сборка</div>
+  <h2 class="h2 anim">Понравилось несколько? <em>Соберём из лучшего</em></h2>
+  <p class="lead anim">Первый экран из одного варианта, каталог из другого, бренды из третьего. Блоки можно включать и выключать — превью обновится сразу.</p>
+  <div class="bwrap">
+   <div class="card anim" id="builder"></div>
+   <div class="frame anim"><div class="bchrome"><div class="dots"><i></i><i></i><i></i></div><div class="addr">🔒 meditech.uz · ваша сборка</div></div><iframe id="bframe" title="Сборка"></iframe></div>
+  </div>
+ </div>
+</section>
+
+<!-- 06 CRM -->
+<section class="slide" data-num="06" data-title="emyCRM">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>06 · CRM</div>
+  <h2 class="h2 anim">emyCRM: <em>ИИ ведёт сделку</em>, пока вы говорите с клиентом</h2>
+  <p class="lead anim">Сделка на медоборудование длится неделями: КП, согласования, тендер, поставка, сервис. CRM держит всю историю клиники в одной карточке.</p>
+  <div class="feat">
+   <div class="anim"><i>1</i><b>Сделки и воронки</b><span>Лиды, клиники, контакты и этапы сделок</span></div>
+   <div class="anim"><i>2</i><b>Телефония</b><span>Звонки из карточки клиента и запись разговоров</span></div>
+   <div class="anim"><i>3</i><b>ИИ-расшифровка</b><span>Суть разговора и оценка интереса клиента</span></div>
+   <div class="anim"><i>4</i><b>Мессенджеры</b><span>Telegram и WhatsApp привязаны к сделке</span></div>
+   <div class="anim"><i>5</i><b>Задачи и календарь</b><span>Напоминания о звонках, поставках и сервисе</span></div>
+   <div class="anim"><i>6</i><b>Интеграции</b><span>Подключение каналов и сервисов по мере роста</span></div>
+   <div class="anim"><i>7</i><b>Роли и доступы</b><span>Каждый отдел видит только своё</span></div>
+   <div class="anim"><i>8</i><b>Аналитика</b><span>Где теряются сделки и как работает каждый менеджер</span></div>
+  </div>
+  <div class="tariff">
+   <div class="tcard anim"><div class="badge">Рекомендуем</div><div class="pt">Тариф «Профессиональный» · до 70 сотрудников</div>
+    <div class="pr">1 056 000 <span>сум / мес</span></div><div class="old">1 320 000 сум / мес при помесячной оплате</div><div class="sv">При оплате за год — 12 672 000 сум, экономия 3 168 000 сум</div>
+    <ul><li>250 ГБ хранилища</li><li>Приоритетная поддержка</li><li>Все возможности CRM, телефонии и ИИ</li><li>14 дней бесплатного теста</li></ul></div>
+   <div class="card anim"><h4 style="margin:0 0 10px">Что входит в подключение от AIVA GROUP</h4>
+    <div class="irow"><span>Интеграция с новым сайтом</span><span class="v free">Бесплатно</span></div>
+    <div class="irow"><span>Настройка Telegram и Instagram</span><span class="v free">Бесплатно</span></div>
+    <div class="irow"><span>Канал Telegram / Instagram (провайдер)</span><span class="v">от 12 000 до 72 000 сум/мес</span></div>
+    <div class="irow"><span>Интеграция с 1С</span><span class="v">по объёму</span></div>
+    <div class="irow"><span>Сопровождение и доработки</span><span class="v">от 2 000 000 сум/мес</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 07 SEO -->
+<section class="slide alt" data-num="07" data-title="SEO-продвижение">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>07 · SEO</div>
+  <h2 class="h2 anim">Закупщики находят вас в Google <em>без оплаты за клик</em></h2>
+  <p class="lead anim">Клиники ищут точными запросами: категория, бренд, модель. Наша задача — оказаться первыми именно в этот момент.</p>
+  <div class="serp anim">
+   <div class="q"><b><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></b><span>щелевая лампа Topcon купить Ташкент</span></div>
+   <div class="res you"><div class="u">meditech.uz › oftalmologiya › topcon</div><div class="t">Щелевые лампы Topcon в Ташкенте — официальный поставщик MediTech</div><div class="d">Поставка, монтаж, обучение и сервис. Шоу-рум в Ташкенте — протестируйте оборудование до покупки. КП за 2 дня.</div></div>
+   <div class="res"><div class="u">olx.uz › medoborudovanie</div><div class="t">Щелевая лампа — купить в Ташкенте: объявления</div><div class="d">Б/у и новое медицинское оборудование от частных продавцов…</div></div>
+  </div>
+  <div class="months">
+   <div class="card anim"><div class="num">Месяц 1</div><h4>Аудит и фундамент</h4><ul><li>Техническая проверка нового сайта: индексация, скорость, ошибки</li><li>Search Console, Метрика, карта сайта</li><li>Семантика по каждому направлению и бренду</li></ul><div class="res-l">Google видит сайт и все разделы каталога</div></div>
+   <div class="card anim"><div class="num">Месяц 2</div><h4>Оптимизация</h4><ul><li>Карточки оборудования, категории, услуги</li><li>Google Business Profile, Яндекс и 2GIS</li><li>Статьи: выбор и регистрация медтехники</li></ul><div class="res-l">Первые позиции по категориям и брендам</div></div>
+   <div class="card anim"><div class="num">Месяц 3</div><h4>Рост и доверие</h4><ul><li>Отраслевые площадки и каталоги</li><li>Отзывы клиник и проекты</li><li>Отчёт: позиции, трафик, заявки</li></ul><div class="res-l">Заявки из Google в emyCRM — в цифрах</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 08 PLAN -->
+<section class="slide" data-num="08" data-title="План работ">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>08 · План работ</div>
+  <h2 class="h2 anim">Что происходит <em>в каждый период</em></h2>
+  <div class="gantt anim">
+   <div class="grow head"><div></div><div>Месяц 1</div><div>Месяц 2</div><div>Месяц 3</div><div>Далее</div></div>
+   <div class="grow"><div class="lb">Сайт</div><div class="bar b1">Разработка и запуск</div><div class="bar b5" style="grid-column:span 3">Поддержка и наполнение</div></div>
+   <div class="grow"><div class="lb">emyCRM</div><div class="bar b2">Тест 14 дней + настройка</div><div class="bar b5" style="grid-column:span 3">Работа отдела продаж в CRM</div></div>
+   <div class="grow"><div class="lb">SEO</div><div class="bar b4">Фундамент</div><div class="bar b3">Оптимизация</div><div class="bar b3">Рост</div><div class="bar b4">Продление</div></div>
+  </div>
+  <div class="miles">
+   <div class="mile anim"><b>Неделя 1</b><span>Сайт снова доступен, CRM в тесте</span></div>
+   <div class="mile anim"><b>Неделя 4</b><span>Новый сайт запущен, заявки идут в CRM</span></div>
+   <div class="mile anim"><b>Месяц 2</b><span>Первые позиции в Google</span></div>
+   <div class="mile anim"><b>Месяц 3</b><span>Отчёт: заявки, источники, стоимость</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- 09 WHO -->
+<section class="slide dark" data-num="09" data-title="Кто мы">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>09 · Кто мы</div>
+  <h2 class="h2 anim">AIVA GROUP — полный цикл: <em>от сайта до заявок</em></h2>
+  <div class="who">
+   <div class="anim"><div class="big">с 2011</div><p class="lead">Разработка сайтов, реклама и продвижение. Более 1000 компаний в Узбекистане и СНГ.</p><div class="team"><span>Проект-менеджер</span><span>Дизайнер</span><span>Разработчик</span><span>SEO-специалист</span><span>Внедрение CRM</span></div></div>
+   <div class="grid g2" style="margin-top:0">
+    <div class="card anim"><h4>Google Premier Partner</h4><p>Статус верхних 3% агентств-партнёров Google</p></div>
+    <div class="card anim"><h4>Партнёр OpenAI</h4><p>Используем ИИ в разработке, SEO и CRM</p></div>
+    <div class="card anim"><h4>emyCRM</h4><p>Собственная CRM-система с ИИ-помощником</p></div>
+    <div class="card anim"><h4>Партнёр Битрикс24</h4><p>Опыт внедрения CRM в отделах продаж</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 10 PRICE -->
+<section class="slide alt" data-num="10" data-title="Стоимость">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>10 · Стоимость</div>
+  <h2 class="h2 anim">Стоимость <em>по каждому блоку</em></h2>
+  <p class="lead anim">Каждый блок можно принять отдельно, но максимальный эффект — когда они работают вместе.</p>
+  <div class="pcards">
+   <div class="pc anim"><div class="t">Разработка · разово</div><h4>Новый сайт под ключ</h4><div class="p">11 000 000 <span>сум</span></div><div class="d">Дизайн, каталог, услуги, проекты, RU / UZ, админ-панель, интеграция с emyCRM.</div></div>
+   <div class="pc anim"><div class="t">Лицензия · 12 месяцев</div><h4>emyCRM «Профессиональный»</h4><div class="p">12 672 000 <span>сум / год</span></div><div class="d">1 056 000 сум/мес вместо 1 320 000. Экономия 3 168 000 сум за год.</div></div>
+   <div class="pc anim"><div class="t">3 месяца работ</div><h4>SEO-продвижение</h4><div class="p">10 500 000 <span>сум</span></div><div class="d">3 500 000 сум в месяц. Старт вместе с запуском нового сайта.</div></div>
+  </div>
+  <div class="total anim"><div><div class="k">Комплекс: сайт + CRM на год + SEO на 3 месяца</div><div class="v">34 172 000 сум</div></div><p>Настройка интеграции CRM с сайтом и подключение Telegram и Instagram — бесплатно.</p></div>
+ </div>
+</section>
+
+<!-- 11 NEXT -->
+<section class="slide dark" data-num="11" data-title="Следующий шаг">
+ <div class="in">
+  <div class="eyebrow anim"><i></i>11 · Следующий шаг</div>
+  <h2 class="h2 anim">Начнём с того, <em>чтобы сайт снова открывался</em></h2>
+  <div class="ctag">
+   <div class="nsteps">
+    <div class="anim"><b>1</b><span>Созвон 30 минут: выбираем концепцию дизайна и состав каталога.</span></div>
+    <div class="anim"><b>2</b><span>Договор и доступы к домену — в первую неделю возвращаем сайт в работу.</span></div>
+    <div class="anim"><b>3</b><span>Запускаем бесплатный тест emyCRM на 14 дней для вашего отдела продаж.</span></div>
+    <div class="anim"><b>4</b><span>Через 4 недели — новый сайт и первые заявки в CRM.</span></div>
+   </div>
+   <div class="clist2 anim">
+    <div><span class="l">Компания</span>AIVA GROUP</div>
+    <div><span class="l">Telegram</span>@aivauz</div>
+    <div><span class="l">Телефон</span>+998 90 004 44 42</div>
+    <div><span class="l">Офис</span>г. Ташкент, ул. Буюк Турон, 77</div>
+    <a class="cta-btn" href="https://t.me/aivauz" target="_blank">Написать в Telegram →</a>
+   </div>
+  </div>
+  <p class="lead anim" style="font-size:13px;margin-top:30px">Предложение подготовлено индивидуально для MediTech и действует 14 дней.</p>
+ </div>
+</section>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const slides=$$('.slide'),root=document.documentElement,body=document.body;
+$('#sAll').textContent=slides.length;
+slides.filter(s=>s.dataset.num).forEach(s=>{
+ const id='s'+s.dataset.num;s.id=id;
+ $('#rail').insertAdjacentHTML('beforeend',`<a href="#${id}" data-ch="${id}"><span class="rn">${s.dataset.num}</span><span class="rt">${s.dataset.title}</span></a>`);
+ $('#sheetList').insertAdjacentHTML('beforeend',`<li><a href="#${id}" data-ch="${id}"><span>${s.dataset.num}</span>${s.dataset.title}</a></li>`);
+});
+let cur=-1;
+function setActive(i){if(i===cur)return;cur=i;const s=slides[i];body.classList.toggle('on-cover',s.id==='cover');
+ if(s.dataset.num){$('#tcNum').textContent=s.dataset.num;$('#tcTitle').textContent=s.dataset.title}
+ $('#sNow').textContent=i+1;$$('[data-ch]').forEach(a=>a.classList.toggle('on',a.dataset.ch===s.id));
+ slides.forEach((x,j)=>x.classList.toggle('cur',j===i));
+ if(root.classList.contains('present')){$('#progress').style.width=(i/(slides.length-1)*100)+'%';$$('.anim',s).forEach(a=>a.classList.add('vis'))}}
+function pick(){const mid=innerHeight*.5;let idx=0;slides.forEach((s,i)=>{if(s.getBoundingClientRect().top<=mid)idx=i});setActive(idx)}
+addEventListener('scroll',()=>{if(root.classList.contains('present'))return;const m=root.scrollHeight-innerHeight;$('#progress').style.width=(m>0?scrollY/m*100:0)+'%';pick()},{passive:true});
+function go(i){i=Math.max(0,Math.min(slides.length-1,i));if(root.classList.contains('present')){setActive(i);return}scrollTo({top:slides[i].offsetTop,behavior:'smooth'})}
+$('#prev').onclick=()=>go(cur-1);$('#next').onclick=()=>go(cur+1);$$('[data-go=next]').forEach(b=>b.onclick=()=>go(cur+1));
+$$('a[href^="#s"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();$('#sheet').classList.remove('open');go(slides.findIndex(s=>'#'+s.id===a.getAttribute('href')))}));
+$('#menuBtn').onclick=()=>$('#sheet').classList.add('open');$('#sheet').onclick=e=>{if(e.target.id==='sheet')e.target.classList.remove('open')};
+$('#modeBtn').onclick=()=>{const k=cur;const on=root.classList.toggle('present');$('#modeLbl').textContent=on?'Режим сайта':'Режим презентации';cur=-1;if(on){setActive(k)}else{slides.forEach(s=>s.classList.remove('cur'));scrollTo({top:slides[k].offsetTop});pick()}};
+addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)&&root.classList.contains('present')){e.preventDefault();go(cur+1)}if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)&&root.classList.contains('present')){e.preventDefault();go(cur-1)}});
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}}),{threshold:.12});$$('.anim').forEach(a=>io.observe(a));
+pick();
+
+/* ===== КОНЦЕПЦИИ ===== */
+const T={
+1:{name:'Клинический',desc:'Светлый, «стерильный»: белый, бирюза, много воздуха',bg:'#ffffff',fg:'#0d2a33',ac:'#0e8f88',soft:'#eef8f7',hero:'linear-gradient(115deg,#f4fbfa 0%,#e3f3f1 100%)',heroFg:'#0d2a33',font:"'Onest',sans-serif",rad:'18px'},
+2:{name:'Премиум',desc:'Тёмный петроль и медь — статус официального дистрибьютора',bg:'#0b2027',fg:'#e8f0ef',ac:'#c97a3d',soft:'#12333b',hero:'radial-gradient(120% 140% at 10% 0%,#1c5762,#0f3b44 50%,#0b2027)',heroFg:'#ffffff',font:"'Geologica',sans-serif",rad:'14px'},
+3:{name:'Каталог-first',desc:'Инженерный: каталог и фильтры на первом экране',bg:'#f6f7f9',fg:'#14213d',ac:'#2563eb',soft:'#ffffff',hero:'#14213d',heroFg:'#ffffff',font:"'Onest',sans-serif",rad:'8px'}};
+const DIRS=[['👁','Офтальмология','Диагностика, хирургия, оптика'],['🦷','Стоматология и ЛОР','Установки и инструменты'],['📈','Функциональная диагностика','ЭКГ, УЗИ, комплексы'],['🏥','Операционное и реанимация','Столы, мониторы пациента'],['✨','Дерматология и косметология','Лазерные и RF-системы'],['🧪','Лаборатория и стерилизация','Анализаторы, автоклавы']];
+const BR=['Bausch + Lomb','Topcon','Tomey','Staar Surgical','Oculus','Volk','Mediworks'];
+function css(t){return `.b${t}{--bg:${T[t].bg};--fg:${T[t].fg};--ac:${T[t].ac};--soft:${T[t].soft};--r:${T[t].rad};background:var(--bg);color:var(--fg);font-family:${T[t].font}}`}
+const blocks={
+nav:t=>`<div class="b${t}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 36px;border-bottom:1px solid rgba(128,128,128,.18)"><b style="font:700 20px Geologica">Medi<span style="color:var(--ac)">Tech</span></b><div style="display:flex;gap:20px;font-size:13px;opacity:.8"><span>Каталог</span><span>Услуги</span><span>Проекты</span><span>Партнёры</span><span>О компании</span><span>Контакты</span></div><span style="background:var(--ac);color:#fff;padding:9px 14px;border-radius:var(--r);font-size:12.5px;font-weight:600">Запросить КП</span></div>`,
+hero:t=>t==1?`<div class="b1" style="background:${T[1].hero};padding:64px 36px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center"><div><div style="color:var(--ac);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">Официальный поставщик · с 2016</div><h1 style="font:600 40px/1.1 Geologica;margin:12px 0">Медицинское оборудование мировых брендов для клиник Узбекистана</h1><p style="opacity:.75">Подбор, поставка, монтаж, обучение и сервис — под ключ.</p><div style="margin-top:20px;display:flex;gap:10px"><span style="background:var(--ac);color:#fff;padding:12px 18px;border-radius:var(--r);font-weight:600">Подобрать оборудование</span><span style="border:1px solid var(--ac);color:var(--ac);padding:12px 18px;border-radius:var(--r);font-weight:600">Шоу-рум</span></div></div><div style="background:#fff;border-radius:24px;padding:22px;box-shadow:0 20px 50px -20px rgba(14,143,136,.35)"><div style="height:170px;border-radius:16px;background:linear-gradient(135deg,#bfe7e3,#e9f7f5);display:grid;place-items:center;font-size:60px">👁</div><div style="display:flex;justify-content:space-between;margin-top:14px;font-size:13px"><b>Topcon SL-D701</b><span style="color:var(--ac)">в шоу-руме</span></div></div></div>`
+:t==2?`<div class="b2" style="background:${T[2].hero};padding:80px 36px;color:#fff;position:relative;overflow:hidden"><div style="position:absolute;right:-80px;top:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(201,122,61,.35),transparent 70%)"></div><div style="color:#8FD8CE;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">MediTech · NAZAR Group</div><h1 style="font:600 46px/1.08 Geologica;margin:14px 0;max-width:620px">Технологии, которым <span style="color:var(--ac)">доверяют врачи</span></h1><p style="opacity:.8;max-width:480px">Официальные поставки Bausch + Lomb, Topcon, Tomey и Staar Surgical. Сервис и обучение персонала.</p><span style="display:inline-block;margin-top:22px;background:var(--ac);color:#fff;padding:13px 20px;border-radius:var(--r);font-weight:600">Запросить коммерческое предложение</span><div style="display:flex;gap:12px;margin-top:36px">${[['с 2016','на рынке'],['18+','брендов'],['4','компании группы'],['1','шоу-рум']].map(x=>`<div style="border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:12px 16px"><b style="font:600 20px Geologica">${x[0]}</b><div style="font-size:11px;opacity:.7">${x[1]}</div></div>`).join('')}</div></div>`
+:`<div class="b3" style="background:${T[3].hero};color:#fff;padding:40px 36px"><h1 style="font:600 32px Geologica;margin:0 0 6px">Каталог медицинского оборудования</h1><p style="opacity:.7;margin:0 0 18px">Более 18 брендов · поставка по всему Узбекистану</p><div style="display:flex;gap:8px;background:#fff;border-radius:10px;padding:6px"><span style="flex:1;color:#888;padding:10px 12px;font-size:14px">Поиск: щелевая лампа, автоклав, периметр…</span><span style="background:var(--ac);color:#fff;padding:10px 18px;border-radius:8px;font-weight:600">Найти</span></div><div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">${['Направление ▾','Бренд ▾','Тип оборудования ▾','В наличии'].map(x=>`<span style="border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:7px 12px;font-size:12.5px">${x}</span>`).join('')}</div></div>`,
+dirs:t=>`<div class="b${t}" style="padding:40px 36px"><h2 style="font:600 24px Geologica;margin:0 0 4px">Направления оборудования</h2><p style="opacity:.6;margin:0 0 18px;font-size:13px">Каталог с фильтрами по направлению и бренду</p><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">${DIRS.map(d=>t==3?`<div style="background:var(--soft);border:1px solid #e3e6ec;border-radius:var(--r);padding:14px;display:flex;gap:12px;align-items:center"><span style="font-size:22px">${d[0]}</span><div><b style="font-size:14px">${d[1]}</b><div style="font-size:12px;opacity:.6">${d[2]}</div></div><span style="margin-left:auto;color:var(--ac)">→</span></div>`:`<div style="background:var(--soft);border-radius:var(--r);padding:18px;${t==2?'border:1px solid rgba(255,255,255,.1)':''}"><div style="width:40px;height:40px;border-radius:12px;background:var(--ac);display:grid;place-items:center;font-size:19px">${d[0]}</div><b style="display:block;margin-top:12px;font-size:15px">${d[1]}</b><div style="font-size:12.5px;opacity:.65;margin-top:3px">${d[2]}</div></div>`).join('')}</div></div>`,
+brands:t=>`<div class="b${t}" style="padding:30px 36px;${t==1?'background:#eef8f7':''}"><h2 style="font:600 20px Geologica;margin:0 0 14px">Официальные партнёры</h2><div style="display:flex;flex-wrap:wrap;gap:10px">${BR.map(b=>`<span style="border:1px solid ${t==2?'rgba(255,255,255,.2)':'#d9dde3'};border-radius:var(--r);padding:12px 18px;font:600 14px Geologica;${t==3?'background:#fff':''}">${b}</span>`).join('')}</div></div>`,
+how:t=>`<div class="b${t}" style="padding:40px 36px"><h2 style="font:600 24px Geologica;margin:0 0 18px">Как мы работаем</h2><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">${[['Заявка','Консультация за 1 день'],['КП','Подбор и расчёт — 2–3 дня'],['Поставка','Доставка, монтаж, запуск'],['Сервис','Обучение и гарантия']].map((x,i)=>`<div style="border-top:3px solid var(--ac);padding-top:12px"><b style="font:600 26px Geologica;color:var(--ac)">0${i+1}</b><div style="font-weight:600;margin-top:6px">${x[0]}</div><div style="font-size:12.5px;opacity:.65">${x[1]}</div></div>`).join('')}</div></div>`,
+form:t=>`<div class="b${t}" style="padding:40px 36px;${t==3?'background:#14213d;color:#fff':''}"><div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;background:${t==2?'#12333b':t==3?'transparent':'#eef8f7'};border-radius:var(--r);padding:26px"><div><h2 style="font:600 24px Geologica;margin:0">Подберём оборудование под задачи клиники</h2><p style="opacity:.7;font-size:13px;margin-top:8px">Ответим в течение рабочего дня. Заявка сразу попадает менеджеру в emyCRM.</p></div><div>${['Ваше имя','Телефон','Направление'].map(x=>`<div style="background:${t==2?'#0b2027':'#fff'};border:1px solid rgba(128,128,128,.25);border-radius:8px;padding:11px 13px;font-size:13px;opacity:.85;margin-bottom:8px;color:${t==2?'#9fb':'#777'}">${x}</div>`).join('')}<div style="background:var(--ac);color:#fff;text-align:center;border-radius:8px;padding:12px;font-weight:600">Отправить заявку</div></div></div></div>`,
+foot:t=>`<div class="b${t}" style="padding:22px 36px;font-size:12px;opacity:.7;display:flex;justify-content:space-between;border-top:1px solid rgba(128,128,128,.18)"><span>© MediTech · часть NAZAR Group</span><span>Ташкент · Пн–Пт 09:00–18:00</span></div>`};
+const ORDER={1:['nav','hero','dirs','how','brands','form','foot'],2:['nav','hero','brands','dirs','how','form','foot'],3:['nav','hero','dirs','brands','how','form','foot']};
+function doc(parts){return `<!doctype html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;600;700&family=Onest:wght@400;600&display=swap" rel="stylesheet"><style>body{margin:0}*{box-sizing:border-box}h1,h2{letter-spacing:-.02em}${[1,2,3].map(css).join('')}</style></head><body>${parts.join('')}</body></html>`}
+const conceptDoc=t=>doc(ORDER[t].map(k=>blocks[k](t)));
+let curC=1;
+[1,2,3].forEach(t=>$('#clist').insertAdjacentHTML('beforeend',`<button class="cbtn${t==1?' on':''}" data-t="${t}"><span class="cn">${t}</span><span><b>Вариант ${t} · ${T[t].name}</b><span>${T[t].desc}</span></span></button>`));
+$$('.cbtn').forEach(b=>b.onclick=()=>{curC=+b.dataset.t;$$('.cbtn').forEach(x=>x.classList.toggle('on',x===b));$('#cframe').srcdoc=conceptDoc(curC)});
+$('#cframe').srcdoc=conceptDoc(1);
+$('#openFull').onclick=()=>{const w=open();w.document.write(conceptDoc(curC));w.document.close()};
+/* ===== СБОРКА ===== */
+const BL=[['hero','Первый экран',2],['dirs','Направления',3],['brands','Партнёры',1],['how','Как работаем',2],['form','Заявка',1]];
+const state={};BL.forEach(b=>state[b[0]]={v:b[2],on:true});
+$('#builder').innerHTML='<h4 style="margin:0 0 6px">Блоки сайта</h4><p style="font-size:13px;color:var(--muted);margin:0 0 6px">Выберите вариант для каждого блока</p>'+BL.map(b=>`<div class="brow" data-k="${b[0]}"><label><input type="checkbox" checked> ${b[1]}</label><div class="opts">${[1,2,3].map(v=>`<button data-v="${v}" class="${v==b[2]?'on':''}">${v}</button>`).join('')}</div></div>`).join('');
+function build(){const nv=state.hero.v;const parts=[blocks.nav(nv)];BL.forEach(b=>{if(state[b[0]].on)parts.push(blocks[b[0]](state[b[0]].v))});parts.push(blocks.foot(nv));$('#bframe').srcdoc=doc(parts)}
+$$('.brow').forEach(r=>{const k=r.dataset.k;$$('button',r).forEach(btn=>btn.onclick=()=>{state[k].v=+btn.dataset.v;$$('button',r).forEach(x=>x.classList.toggle('on',x===btn));build()});$('input',r).onchange=e=>{state[k].on=e.target.checked;r.classList.toggle('off',!e.target.checked);build()}});
+build();
+})();
+</script>
+</body>
+</html>
