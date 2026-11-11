@@ -116,7 +116,7 @@ section { position: relative; }
 .logo-mark::before, .logo-mark::after { content: ''; position: absolute; background: #fff; }
 .logo-mark::before { left: 11px; top: 5px; width: 4px; height: 16px; }
 .logo-mark::after { left: 5px; top: 11px; width: 16px; height: 4px; }
-.nav { display: flex; gap: clamp(14px, 1.6vw, 28px); font-size: 15px; font-weight: 500; }
+.nav { display: flex; gap: clamp(14px, 1.6vw, 28px); font-size: 15px; font-weight: 500; white-space: nowrap; }
 .nav a { padding: 6px 0; color: var(--ink); position: relative; }
 .nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform var(--t-fast) var(--ease-out); }
 .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
@@ -132,7 +132,7 @@ section { position: relative; }
 .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 .mobile-nav { display: none; }
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .nav, .header-right .btn { display: none; }
   .burger { display: block; }
   .mobile-nav { display: block; position: fixed; inset: 72px 0 0 0; z-index: 49; background: var(--bg); padding: 24px var(--margin) 40px; overflow: auto;
@@ -209,7 +209,7 @@ section { position: relative; }
 .band .band-label span { display: block; margin-top: 6px; font-size: var(--step-small); color: #cbd6db; opacity: 0; transform: translateY(6px); transition: opacity .4s var(--ease-out), transform .4s var(--ease-out); }
 .band a:hover .band-label span { opacity: 1; transform: none; }
 .band-caption { margin-top: 16px; }
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .band-head { margin-bottom: 32px; } .band-head h2 { grid-column: 1 / -1; } .band-head .band-link { grid-column: 1 / -1; justify-self: start; margin-top: 16px; }
   .band { display: grid; grid-template-columns: 64fr 36fr; grid-auto-rows: 42svh; height: auto; min-height: 0; max-height: none; }
   .band a:nth-child(4n+3) { grid-column: 2; } .band a:nth-child(4n+4) { grid-column: 1; }
