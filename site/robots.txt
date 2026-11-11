@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://vimovich.github.io/meditech-offer/site/sitemap.xml
+Sitemap: https://meditech-site-ibragimbeast-7903s-projects.vercel.app/sitemap.xml
