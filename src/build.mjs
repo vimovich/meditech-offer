@@ -6,7 +6,7 @@ import { img, photo, brands, categories, products, news, faq, projects, company 
 import { i18n } from './i18n.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://vimovich.github.io/meditech-offer/site';
+const SITE = 'https://meditech-site-ibragimbeast-7903s-projects.vercel.app';
 const brandOf = (slug) => brands.find((b) => b.slug === slug);
 const catOf = (slug) => categories.find((c) => c.slug === slug);
 const subOf = (cat, sub) => catOf(cat).subs.find((s) => s.slug === sub);
